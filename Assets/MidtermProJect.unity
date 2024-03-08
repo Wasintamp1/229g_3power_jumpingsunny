@@ -491,8 +491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531e32df392fe3947b55925b6e5fe5c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensX: 1000
-  sensY: 1000
+  sensX: 1250
+  sensY: 1250
   orientation: {fileID: 2083670512}
 --- !u!114 &1045025892
 MonoBehaviour:
@@ -584,10 +584,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 7
   groundDrag: 5
-  playerHight: 5
+  jumpForce: 12
+  jumpColdDown: 1
+  airMultiplier: 0.4
+  jumpKey: 32
+  playerHight: 2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   orientation: {fileID: 2083670512}
 --- !u!1 &1262825290
 GameObject:
