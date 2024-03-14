@@ -14,13 +14,17 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier;
     bool readyToJump;
 
+    public float drop;
+
     [Header("KeyBinds")]
     public KeyCode jumpKey = KeyCode.Space;
 
     [Header("Ground Check")]
     public float playerHight;
     public LayerMask whatIsGround;
+    public LayerMask ice;
     bool grounded;
+    bool iced;
 
     public Transform orientation;
 
@@ -44,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
     {
         //Ground Check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHight * 0.5f + 0.2f, whatIsGround);
+        iced = Physics.Raycast(transform.position, Vector3.down, playerHight * 0.5f + 0.2f, ice);
+
 
         MyInput();
         SpeedControl();
@@ -51,12 +57,14 @@ public class PlayerMovement : MonoBehaviour
         //handed drag
         if(grounded)
         {
+            
             rb.drag = groundDrag;
         }
         else
         {
             rb.drag = 0;
         }
+        
     }
 
     private void FixedUpdate()
@@ -70,13 +78,24 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         //when to jump
-        if(Input.GetKey(jumpKey) && readyToJump && grounded)
+        /*if(Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
 
             Jump();
 
             Invoke(nameof(ResetJump), jumpColdDown);
+        }*/
+        if (Input.GetKey(jumpKey) && readyToJump)
+        {
+            if (grounded || iced)
+            {
+                readyToJump = false;
+
+                Jump();
+
+                Invoke(nameof(ResetJump), jumpColdDown);
+            }
         }
     }
 
@@ -92,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
         //in air
         else if(!grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(0, drop * -1, 0);
     }
 
     private void SpeedControl()
@@ -118,4 +138,5 @@ public class PlayerMovement : MonoBehaviour
     {
         readyToJump = true;
     }
+
 }
