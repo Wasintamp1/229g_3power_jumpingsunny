@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+ 
     [Header("Movement")]
     public float moveSpeed;
     
@@ -24,8 +25,13 @@ public class PlayerMovement : MonoBehaviour
     public float playerHight;
     public LayerMask whatIsGround;
     public LayerMask ice;
+    public LayerMask jumpPad;
+    public LayerMask sticky;
     bool grounded;
     bool iced;
+    bool stickied;
+    bool jumpPaded;
+    
 
     public Transform orientation;
 
@@ -50,21 +56,15 @@ public class PlayerMovement : MonoBehaviour
         //Ground Check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHight * 0.5f + 0.2f, whatIsGround);
         iced = Physics.Raycast(transform.position, Vector3.down, playerHight * 0.5f + 0.2f, ice);
-
+        stickied = Physics.Raycast(transform.position, Vector3.down, playerHight * 0.5f + 0.2f, sticky);
+        jumpPaded = Physics.Raycast(transform.position, Vector3.down, playerHight * 0.5f + 0.2f, jumpPad);
 
         MyInput();
         SpeedControl();
 
         //handed drag
-        if(grounded)
-        {
-            
-            rb.drag = groundDrag;
-        }
-        else
-        {
-            rb.drag = 0;
-        }
+        DragCheck();
+        
         
     }
 
@@ -79,17 +79,9 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         //when to jump
-        /*if(Input.GetKey(jumpKey) && readyToJump && grounded)
-        {
-            readyToJump = false;
-
-            Jump();
-
-            Invoke(nameof(ResetJump), jumpColdDown);
-        }*/
         if (Input.GetKey(jumpKey) && readyToJump)
         {
-            if (grounded || iced)
+            if (grounded || iced || stickied || jumpPaded)
             {
                 readyToJump = false;
 
@@ -106,11 +98,13 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         //on ground
-        if(grounded)
+        if(grounded || stickied || jumpPaded == true)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f ,ForceMode.Force);
+        else if(iced)
+            rb.AddForce(moveDirection.normalized * moveSpeed * 30f ,ForceMode.Force);
 
         //in air
-        else if(!grounded)
+        else /*if(!grounded)*/
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
             rb.AddForce(0, drop * -1, 0);
     }
@@ -132,7 +126,19 @@ public class PlayerMovement : MonoBehaviour
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        if (stickied == true)
+        {
+            rb.AddForce(transform.up * (jumpForce / 2), ForceMode.Impulse);
+        }
+        else if (jumpPaded == true)
+        {
+            rb.AddForce(transform.up * (jumpForce * 1.2f), ForceMode.Impulse);
+        }
+        else
+        {
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        }
+        
     }
 
     private void ResetJump()
@@ -140,4 +146,20 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
     }
 
+    private void DragCheck()
+    {
+        if (grounded  || jumpPaded == true)
+        {
+
+            rb.drag = groundDrag;
+        }
+        else if(stickied == true) 
+        {
+            rb.drag = groundDrag * 1.2f;
+        }
+        else
+        {
+            rb.drag = 0;
+        }
+    }
 }
