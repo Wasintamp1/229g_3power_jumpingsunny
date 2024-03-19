@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float jumpColdDown;
     public float airMultiplier;
+    public float jumpMultiplier;
     bool readyToJump;
 
     public float drop;
@@ -31,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
     bool iced;
     bool stickied;
     bool jumpPaded;
-    
 
     public Transform orientation;
 
@@ -41,6 +41,9 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+
+    //[Header("Pos")]
+    //[SerializeField];
 
     // Start is called before the first frame update
     void Start()
@@ -132,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (jumpPaded == true)
         {
-            rb.AddForce(transform.up * (jumpForce * 1.2f), ForceMode.Impulse);
+            rb.AddForce(transform.up * (jumpForce * jumpMultiplier), ForceMode.Impulse);
         }
         else
         {
