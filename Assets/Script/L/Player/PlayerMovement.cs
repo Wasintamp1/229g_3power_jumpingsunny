@@ -101,8 +101,10 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         //on ground
-        if(grounded || stickied || jumpPaded == true)
+        if(grounded || jumpPaded == true)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f ,ForceMode.Force);
+        else if(stickied)
+            rb.AddForce(moveDirection.normalized * moveSpeed * 5f ,ForceMode.Force);
         else if(iced)
             rb.AddForce(moveDirection.normalized * moveSpeed * 30f ,ForceMode.Force);
 
@@ -131,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (stickied == true)
         {
-            rb.AddForce(transform.up * (jumpForce / 2), ForceMode.Impulse);
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         }
         else if (jumpPaded == true)
         {
