@@ -15,7 +15,9 @@ public class Timer : MonoBehaviour
     public bool isTimeOut = false;
 
     public bool isStart = false;
-    public Collider startCollider;
+
+    public bool isEnd = false;
+    public GameObject endCredit;
 
     private void Start()
     {
@@ -29,8 +31,11 @@ public class Timer : MonoBehaviour
             if (timeValue > 0)
             {
                 timeValue -= Time.deltaTime;
+            }else if (isEnd && timeValue < 0)
+            {
+                SceneManager.LoadSceneAsync(0);
             }
-            else
+            else if(!isEnd) 
             {
                 if (!isTimeOut)
                 {
@@ -75,7 +80,10 @@ public class Timer : MonoBehaviour
 
         if (other.tag == "PointEnd")
         {
-            
+            timeValue = 8f;
+            isEnd = true;
+            endCredit.SetActive(true);
+            timerText.enabled = false;
         }
     }
 }
