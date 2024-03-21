@@ -1406,7 +1406,7 @@ GameObject:
   - component: {fileID: 1868566926}
   m_Layer: 0
   m_Name: Start
-  m_TagString: Untagged
+  m_TagString: PointStart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1460,7 +1460,7 @@ GameObject:
   - component: {fileID: 1924682297}
   m_Layer: 0
   m_Name: End
-  m_TagString: Untagged
+  m_TagString: PointEnd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
