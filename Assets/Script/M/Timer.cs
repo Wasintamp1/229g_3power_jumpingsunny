@@ -61,6 +61,19 @@ public class Timer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        isStart = true;
+        if (other.tag == "PointStart")
+        {
+            isStart = true;
+        }
+
+        if (other.tag == "AddTime")
+        {
+            timeValue += 5;
+        }
+
+        if (other.tag == "PointEnd")
+        {
+            
+        }
     }
 }
