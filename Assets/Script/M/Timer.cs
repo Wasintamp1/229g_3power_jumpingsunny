@@ -30,9 +30,9 @@ public class Timer : MonoBehaviour
         {
             if (timeValue > 0)
             {
-                timeValue -= Time.deltaTime;
+                timeValue -= Time.deltaTime; // count down time
             }
-            else if (isEnd && timeValue < 0)
+            else if (isEnd && timeValue < 0) // when video credit end back to main menu
             {
                 SceneManager.LoadSceneAsync(0);
             }
@@ -46,7 +46,7 @@ public class Timer : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // reset scene
                 }
             }
         }
@@ -64,22 +64,22 @@ public class Timer : MonoBehaviour
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds); // show text in canvas
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "PointStart")
+        if (other.tag == "PointStart") // hit object start count down time
         {
             isStart = true;
         }
 
-        if (other.tag == "AddTime")
+        if (other.tag == "AddTime") // hit Object add more time 
         {
             timeValue += addTime;
         }
 
-        if (other.tag == "PointEnd")
+        if (other.tag == "PointEnd") // hit object start play Endcredit
         {
             timeValue = 8f;
             isEnd = true;
