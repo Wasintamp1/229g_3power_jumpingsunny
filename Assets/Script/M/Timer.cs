@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
     public float timeValue;
     public Text timerText;
+
+    public GameObject timeOut;
+    public bool isTimeOut = false;
 
     public bool isStart = false;
     public Collider startCollider;
@@ -26,7 +30,16 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                timeValue = 0f;
+                if (!isTimeOut)
+                {
+                    timeValue = 3f;
+                    isTimeOut = true;
+                    timeOut.SetActive(true);
+                }
+                else
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                }
             }
         }
 
