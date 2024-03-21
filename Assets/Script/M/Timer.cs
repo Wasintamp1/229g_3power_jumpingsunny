@@ -31,11 +31,12 @@ public class Timer : MonoBehaviour
             if (timeValue > 0)
             {
                 timeValue -= Time.deltaTime;
-            }else if (isEnd && timeValue < 0)
+            }
+            else if (isEnd && timeValue < 0)
             {
                 SceneManager.LoadSceneAsync(0);
             }
-            else if(!isEnd) 
+            else
             {
                 if (!isTimeOut)
                 {
