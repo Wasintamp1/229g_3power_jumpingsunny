@@ -325,6 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeValue: 0
   timerText: {fileID: 147232427}
+  start: {fileID: 1868566926}
 --- !u!1 &596141848
 GameObject:
   m_ObjectHideFlags: 0
