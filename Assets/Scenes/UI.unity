@@ -323,9 +323,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40552fb840c479c4f8994c319e229d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeValue: 0
+  timeValue: 90
   timerText: {fileID: 147232427}
-  start: {fileID: 1868566926}
+  isStart: 0
+  startCollider: {fileID: 1868566926}
 --- !u!1 &596141848
 GameObject:
   m_ObjectHideFlags: 0
