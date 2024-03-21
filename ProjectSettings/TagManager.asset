@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - AddTime
+  - PointStart
+  - PointEnd
   layers:
   - Default
   - TransparentFX

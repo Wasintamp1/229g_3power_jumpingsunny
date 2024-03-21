@@ -325,6 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeValue: 10
   timerText: {fileID: 147232427}
+  addTime: 5
   timeOut: {fileID: 456739287}
   isTimeOut: 0
   isStart: 0

@@ -9,6 +9,8 @@ public class Timer : MonoBehaviour
     public float timeValue;
     public Text timerText;
 
+    public float addTime;
+
     public GameObject timeOut;
     public bool isTimeOut = false;
 
@@ -68,7 +70,7 @@ public class Timer : MonoBehaviour
 
         if (other.tag == "AddTime")
         {
-            timeValue += 5;
+            timeValue += addTime;
         }
 
         if (other.tag == "PointEnd")
