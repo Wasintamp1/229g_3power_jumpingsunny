@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
+    public PlayerMovement player;
+
     public float timeValue;
     public Text timerText;
 
@@ -85,6 +87,7 @@ public class Timer : MonoBehaviour
             isEnd = true;
             endCredit.SetActive(true);
             timerText.enabled = false;
+            player.enabled = false;
         }
     }
 }
