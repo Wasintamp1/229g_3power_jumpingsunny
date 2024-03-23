@@ -8,6 +8,8 @@ public class Timer : MonoBehaviour
 {
     public PlayerMovement player;
 
+    public GameObject sound;
+
     public float timeValue;
     public Text timerText;
 
@@ -88,6 +90,8 @@ public class Timer : MonoBehaviour
             endCredit.SetActive(true);
             timerText.enabled = false;
             player.enabled = false;
+            sound.SetActive(false);
+
         }
     }
 }
