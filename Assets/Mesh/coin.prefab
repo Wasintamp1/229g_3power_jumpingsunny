@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: coin
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 520a783e00b3bb24f92aeacee5f88843, type: 3}
+      propertyPath: m_TagString
+      value: AddTime
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -77,6 +81,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 520a783e00b3bb24f92aeacee5f88843, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1145217661529180988}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 520a783e00b3bb24f92aeacee5f88843, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5955602907022728605}
   m_SourcePrefab: {fileID: 100100000, guid: 520a783e00b3bb24f92aeacee5f88843, type: 3}
 --- !u!1 &2290539502439513480 stripped
 GameObject:
@@ -125,9 +132,9 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -147,3 +154,15 @@ MonoBehaviour:
   rotationSpeed: 200
   rotationAxis: {x: 0, y: 1, z: 0}
   rotateClockwise: 1
+--- !u!114 &5955602907022728605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2290539502439513480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44382c138f4e04d4b9a18e57b5c9e5f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

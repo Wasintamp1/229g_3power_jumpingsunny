@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
         else if(stickied)
             rb.AddForce(moveDirection.normalized * moveSpeed * 5f ,ForceMode.Force);
         else if(iced)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 30f ,ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * 20f ,ForceMode.Force);
 
         //in air
         else /*if(!grounded)*/
