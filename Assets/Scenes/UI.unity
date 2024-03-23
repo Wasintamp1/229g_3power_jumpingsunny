@@ -323,6 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40552fb840c479c4f8994c319e229d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 358934862}
   timeValue: 10
   timerText: {fileID: 147232427}
   addTime: 5
@@ -331,6 +332,17 @@ MonoBehaviour:
   isStart: 0
   isEnd: 0
   endCredit: {fileID: 1737035201}
+--- !u!114 &358934862 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9096023756659674183, guid: 043745a9de7bcb4458b4cb44b161ebea, type: 3}
+  m_PrefabInstance: {fileID: 1112023668}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358934856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569098032aa6bd140bedad145529cc45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &361705334
 GameObject:
   m_ObjectHideFlags: 0
